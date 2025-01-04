@@ -1,3 +1,7 @@
+networks:
+  default:
+    driver: bridge
+
 services:
   db:
     image: postgres
@@ -7,3 +11,18 @@ services:
       POSTGRES_PASSWORD: postgres
     ports:
         - 9010:5432
+    networks:
+        - default
+  tasktracker:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+        - 8080:8080
+    networks:
+        - default
+    environment:
+        DB-URL: jdbc:postgresql://db:5432/tasktracker
+        DB-USERNAME: postgres
+        DB-PASSWORD: postgres
+

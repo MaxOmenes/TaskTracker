@@ -2,10 +2,13 @@ spring:
   application:
     name: tasktracker
   datasource:
-    url: jdbc:postgresql://localhost:9010/tasktracker
-    username: postgres
-    password: postgres
+    url: ${DB-URL:jdbc:postgresql://localhost:9010/tasktracker}
+    username: ${DB-USERNAME:postgres}
+    password: ${DB-PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect

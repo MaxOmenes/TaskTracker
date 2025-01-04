@@ -48,10 +48,10 @@ public class TaskController {
         taskRepository.findById(Long.parseLong(task_id)).or(() -> {
             throw new RuntimeException("Task not found");
         }).ifPresent(task -> {
-            if (!name.isEmpty()) {
+            if (name != null) {
                 task.setName(name);
             }
-            if (!status.isEmpty()) {
+            if (status != null) {
                 task.setStatus(TaskEntity.TaskStatus.valueOf(status));
             }
             taskRepository.save(task);
