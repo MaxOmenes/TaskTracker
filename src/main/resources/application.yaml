@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: tasktracker
+  datasource:
+    url: jdbc:postgresql://localhost:9010/tasktracker
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
